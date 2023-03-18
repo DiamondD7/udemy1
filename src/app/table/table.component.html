@@ -1,0 +1,26 @@
+
+
+
+<form-apps></form-apps>
+
+
+<table>
+    <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Card Number</th>
+        <th>Exp</th>
+        <th></th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let obj of data; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{obj.cardOwnerName}}</td>
+            <td>{{obj.cardNumber}}</td>
+            <td>{{obj.expirationDate}}</td>
+            <td><button type="button" (click)="deleteData(obj.paymentDetailId)">DELETE</button></td>
+            <td><button type="button">UPDATE</button></td>
+        </tr>
+    </tbody>
+</table>
