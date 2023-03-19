@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { PaymentDetail } from '../service/service.model';
 import { PaymentDetailService } from '../service/service.services';
 
 @Component({
@@ -35,5 +36,9 @@ export class TableComponent implements OnInit{
         this.service.refreshList().subscribe((data:any) => {
             this.data = data;
         })
+    }
+
+    updateData(selectedData:PaymentDetail){
+        this.service.formData = selectedData;
     }
 }

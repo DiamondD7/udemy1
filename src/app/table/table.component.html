@@ -20,7 +20,7 @@
             <td>{{obj.cardNumber}}</td>
             <td>{{obj.expirationDate}}</td>
             <td><button type="button" (click)="deleteData(obj.paymentDetailId)">DELETE</button></td>
-            <td><button type="button">UPDATE</button></td>
+            <td><button type="button" (click)="updateData(obj)">UPDATE</button></td>
         </tr>
     </tbody>
 </table>

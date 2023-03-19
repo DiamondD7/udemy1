@@ -13,6 +13,8 @@ import { TableComponent } from '../table/table.component';
 
 export class FormComponent implements OnInit{
 
+
+    showPassword:boolean = false;
     constructor(public service:PaymentDetailService, private fetchService:TableComponent){
 
     }
@@ -21,6 +23,15 @@ export class FormComponent implements OnInit{
     }
 
     onSubmit(form:NgForm){
+        if(this.service.formData.paymentDetailId == 0){
+            this.onPostEvent(form);
+        }else{
+            this.onPutEvent(form);
+        }
+    }
+
+
+    onPostEvent(form:NgForm){
         this.service.postPaymentDetail().subscribe(
             res => {
                 this.service.refreshList();
@@ -34,6 +45,25 @@ export class FormComponent implements OnInit{
         )
     }
 
+    onPutEvent(form:NgForm){
+        this.service.putPaymentDetail(this.service.formData.paymentDetailId).subscribe(
+            res => {
+                this.resetForm(form);
+                this.service.refreshList();
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    }
+
+    onShowPasswordClick(){
+        if(this.showPassword == true){
+            this.showPassword = false;
+        }else{
+            this.showPassword = true;
+        }
+    }
 
     resetForm(form:NgForm){
         form.form.reset();

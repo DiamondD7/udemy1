@@ -20,8 +20,9 @@
     </div>
 
     <div>
-        <input type="password" placeholder="SecurityCode" name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode"
+        <input [type]="this.showPassword == true ? 'text' : 'password'" placeholder="SecurityCode" name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode"
         required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched"/>
+        <button (click)="onShowPasswordClick()">show</button>
     </div>
 
     <button type="submit" [disabled]="form.invalid">SUBMIT</button>
